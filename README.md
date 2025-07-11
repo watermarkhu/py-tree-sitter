@@ -1,5 +1,9 @@
 # Python Tree-sitter
 
+> [!IMPORTANT]
+> This clone of the original repository [py-tree-sitter](https://github.com/tree-sitter/py-tree-sitter) is only intended to release a version that supports tree-sitter language version 15. The support for it is already provided on the main branch but the maintainer is not reponsive to push a new version. When a new version is released to Pypi this repository will be deleted again. See the relevant [discussion](https://github.com/tree-sitter/py-tree-sitter/discussions/368)
+
+
 [![CI][ci]](https://github.com/tree-sitter/py-tree-sitter/actions/workflows/ci.yml)
 [![pypi][pypi]](https://pypi.org/project/tree-sitter/)
 [![docs][docs]](https://tree-sitter.github.io/py-tree-sitter/)

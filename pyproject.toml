@@ -3,9 +3,9 @@ requires = ["setuptools>=43"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "tree-sitter"
-version = "0.24.0"
-description = "Python bindings to the Tree-sitter parsing library"
+name = "tree-sitter-language-version-15"
+version = "0.25.0"
+description = "Python bindings to the Tree-sitter parsing library. Temporary repo to get support for tree-sitter langange version 15"
 keywords = ["incremental", "parsing", "tree-sitter"]
 classifiers = [
     "Intended Audience :: Developers",
@@ -21,15 +21,13 @@ requires-python = ">=3.10"
 readme = "README.md"
 
 [project.urls]
-Homepage = "https://tree-sitter.github.io/tree-sitter/"
-Source = "https://github.com/tree-sitter/py-tree-sitter"
-Documentation = "https://tree-sitter.github.io/py-tree-sitter/"
+Source = "https://github.com/watermarkhu/py-tree-sitter"
 Discord = "https://discord.gg/w7nTvsVJhm"
 Matrix = "https://matrix.to/#/#tree-sitter-chat:matrix.org"
 
 [[project.authors]]
-name = "Max Brunsfeld"
-email = "maxbrunsfeld@gmail.com"
+name = "Mark Hu"
+email = "watermarkhu@gmail.com"
 
 [project.optional-dependencies]
 docs = ["sphinx~=8.1", "sphinx-book-theme"]
