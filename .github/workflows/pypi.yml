@@ -39,22 +39,24 @@ jobs:
           - { os: macos-14,         cibw_arch: arm64 }
           - { os: macos-13,         cibw_arch: x86_64 }
     steps:
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v6
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           submodules: true
+
       - name: Build wheels
-        uses: pypa/cibuildwheel@v2.23
-        env:
-          CIBW_ARCHS: ${{matrix.cibw_arch}}
-          CIBW_SKIP: "pp* *-musllinux_aarch64"
-          # FIXME: only skip win_arm64 when the tests stop crashing
-          CIBW_TEST_SKIP: "*-win_*"
+        run: |
+          uv sync
+          uv build
+
       - name: Upload wheels
         uses: actions/upload-artifact@v4
         with:
           name: dist-wheels-${{matrix.os}}-${{matrix.cibw_arch}}
-          path: wheelhouse/*.whl
+          path: dist/*.whl
           retention-days: 2
 
   release:
