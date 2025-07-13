@@ -35,7 +35,7 @@ jobs:
         run: |
           uv run auditwheel repair dist/*.whl -w wheelhouse
           rm dist/*.whl
-          mv wheelhouse/*.wh dist/
+          mv wheelhouse/*.whl dist/
 
       - name: Upload wheels
         uses: actions/upload-artifact@v4
