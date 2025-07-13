@@ -27,7 +27,7 @@ jobs:
 
       - name: Build wheels
         run: |
-          uv sync
+          uv sync --group build
           uv build
 
       - name: Audit wheels
