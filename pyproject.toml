@@ -32,9 +32,11 @@ email = "watermarkhu@gmail.com"
 
 [dependency-groups]
 dev = [
-    "auditwheel>=6.4.1",
     "mypy>=1.16.1",
     "ruff>=0.12.3",
+]
+build = [
+    "auditwheel>=6.4.1",
 ]
 docs = [
     "sphinx~=8.1",
