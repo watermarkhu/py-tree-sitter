@@ -30,6 +30,13 @@ jobs:
           uv sync
           uv build
 
+      - name: Audit wheels
+        if: ${{ startsWith(matrix.os, 'ubuntu') }}
+        run: |
+          uv run auditwheel repair dist/*.whl -w wheelhouse
+          rm dist/*.whl
+          mv wheelhouse/*.wh dist/
+
       - name: Upload wheels
         uses: actions/upload-artifact@v4
         with:
@@ -51,24 +58,19 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
-          path: build
+          path: dist
           pattern: dist-*
           merge-multiple: true
 
       - name: Check artifacts
-        run: ls -l build
+        run: ls -l dist
 
       - name: Install the latest version of uv
         uses: astral-sh/setup-uv@v6
 
-      - name: Repair wheels
+      - name: Publish package distributions to PyPI
         run: |
-          uv sync --group build
-          uv run auditwheel repair dist/*.whl -w wheelhouse
-
-      - name: Publish repaired wheels to PyPI
-        run: |
-          uv publish dist/*.tar.gz wheelhouse/*.whl
+          uv publish
 
       - name: Publish package distributions to GitHub Releases
         id: publish-dist
@@ -76,5 +78,5 @@ jobs:
         with:
           tag_name: ${{ github.ref_name }}
           files: |
-            wheelhouse/*.whl
+            dist/*.whl
             dist/*.tar.gz
